@@ -1,0 +1,10 @@
+# Generated Apps
+/ios/
+/android/
+/node_modules/
+/config/
+/app/services/i18n/en.json
+/app/api/generated.tsx
+README.md
+.github/
+/coverage/

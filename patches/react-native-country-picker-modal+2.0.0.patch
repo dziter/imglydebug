@@ -1,0 +1,50 @@
+diff --git a/node_modules/react-native-country-picker-modal/lib/CountryPicker.js b/node_modules/react-native-country-picker-modal/lib/CountryPicker.js
+index c4ba18e..45be42a 100644
+--- a/node_modules/react-native-country-picker-modal/lib/CountryPicker.js
++++ b/node_modules/react-native-country-picker-modal/lib/CountryPicker.js
+@@ -56,9 +56,18 @@ export const CountryPicker = (props) => {
+         placeholder,
+     };
+     useEffect(() => {
++        let isCancelled = false
+         getCountriesAsync(withEmoji ? FlagType.EMOJI : FlagType.FLAT, translation, region, subregion, countryCodes, excludeCountries, preferredCountries, withAlphaFilter)
+-            .then(setCountries)
++            .then((countries) => {
++                if (!isCancelled) {
++                    setCountries(countries)
++                }
++            })
+             .catch(console.warn);
++
++        return () => {
++            isCancelled = true
++        }
+     }, [translation, withEmoji]);
+     return (React.createElement(React.Fragment, null,
+         withModal && renderFlagButton(flagProp),
+diff --git a/node_modules/react-native-country-picker-modal/lib/FlagButton.js b/node_modules/react-native-country-picker-modal/lib/FlagButton.js
+index 7ad3e7b..49c78c6 100644
+--- a/node_modules/react-native-country-picker-modal/lib/FlagButton.js
++++ b/node_modules/react-native-country-picker-modal/lib/FlagButton.js
+@@ -32,11 +32,20 @@ const FlagWithSomething = memo(({ countryCode, withEmoji, withCountryNameButton,
+     });
+     const { countryName, currency, callingCode } = state;
+     useEffect(() => {
++        let isCancelled = false
+         if (countryCode) {
+             getCountryInfoAsync({ countryCode, translation })
+-                .then(setState)
++                .then((result) => {
++                    if(!isCancelled){
++                        setState(result)
++                    }
++                })
+                 .catch(console.warn);
+         }
++
++        return () => {
++            isCancelled = true
++        }
+     }, [
+         countryCode,
+         withCountryNameButton,

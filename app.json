@@ -1,0 +1,61 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": ""
+      }
+    },
+    "name": "lapsus-noxapp",
+    "slug": "lapsus-noxapp",
+    "scheme": "lapsus-noxapp",
+    "owner": "lapsus",
+    "version": "2.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "facebookScheme": "",
+    "facebookAppId": "",
+    "facebookDisplayName": "NOX",
+    "facebookAutoLogAppEventsEnabled": false,
+    "facebookAdvertiserIDCollectionEnabled": false,
+    "splash": {
+      "image": "./app/assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#000000"
+    },
+    "notification": {
+      "icon": "./assets/pushicon.png",
+      "androidMode": "default",
+      "iosDisplayInForeground": true
+    },
+    "runtimeVersion": "2.1",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "bundleIdentifier": "com.nox.noxapp",
+      "supportsTablet": true,
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app uses the location to allow you to see Nox on the Map.",
+        "NSCameraUsageDescription": "This app needs access to your Camera in order to allow you to create wonderful videos.",
+        "NSContactsUsageDescription": "This app needs access to your contacts to help you find them within it.",
+        "UIBackgroundModes": ["remote-notification"],
+        "LSApplicationQueriesSchemes": [
+          "fb",
+          "instagram",
+          "tiktok",
+          "twitter",
+          "vnd.youtube",
+          "youtube",
+          "snapchat",
+          "reddit",
+          "tumblr",
+          "pinterest"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.nox.noxapp"
+    },
+    "plugins": ["@config-plugins/detox"]
+  }
+}
